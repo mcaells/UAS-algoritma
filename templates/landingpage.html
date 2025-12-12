@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scheduler - Tampilan Depan</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <style>
+    /* CSS Khusus Landing Page */
+    .landing-container {
+      max-width: 1000px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    header.landing-header {
+      background-color: #3498db;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-menu a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    .section {
+      padding: 40px 0;
+      border-bottom: 1px solid #eee;
+    }
+
+    .section h2 {
+      color: #2c3e50;
+      border-bottom: none;
+    }
+
+    .features-list {
+      display: flex;
+      gap: 30px;
+      margin-top: 20px;
+    }
+
+    .feature-item {
+      background: #ecf0f1;
+      padding: 20px;
+      border-radius: 8px;
+      flex: 1;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #2c3e50;
+      color: white;
+      margin-top: 30px;
+    }
+
+    .faq-item {
+      margin-bottom: 15px;
+      border: 1px solid #ddd;
+      padding: 15px;
+      border-radius: 5px;
+    }
+
+    .faq-question {
+      font-weight: bold;
+      cursor: pointer;
+      color: #1a5e93;
+    }
+
+    .faq-answer {
+      display: none;
+      padding-top: 10px;
+      font-size: 0.95em;
+      color: #555;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="landing-header">
+    <div class="logo">Scheduler Web</div>
+    <nav class="nav-menu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#features">Features</a>
+      <a href="register.html">Register</a>
+      <a href="login.html">Login</a>
+    </nav>
+  </header>
+
+  <div class="landing-container">
+    <section id="about" class="section">
+      <h2>Tentang Kami</h2>
+      <p>
+        Ini adalah alasan mengapa web ini dibuat (misalnya: Untuk membantu
+        mahasiswa mengelola jadwal mata kuliah dan penugasan secara terpusat
+        dan efisien).
+      </p>
+    </section>
+
+    <section id="features" class="section">
+      <h2>Fitur Unggulan</h2>
+      <div class="features-list">
+        <div class="feature-item">
+          <h3>Membuat Jadwal Belajar</h3>
+          <p>Atur jadwal mata kuliah dan sesi belajar Anda.</p>
+        </div>
+        <div class="feature-item">
+          <h3>Mencatat Tugas & Deadline</h3>
+          <p>
+            Kelola semua tugas dengan deadline yang jelas dan status
+            penyelesaian.
+          </p>
+        </div>
+        <div class="feature-item">
+          <h3>Kontak & Email</h3>
+          <p>Hubungi kami jika ada pertanyaan atau kendala teknis.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <h2>Bantuan (FAQ)</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <div class="faq-question">1. Bagaimana cara buat akun?</div>
+          <div class="faq-answer">
+            Anda bisa mendaftar melalui halaman Register dan mengisi data yang
+            diperlukan (Email, No. Telp, Username, Password).
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            2. Bagaimana cara reset password jika lupa Password?
+          </div>
+          <div class="faq-answer">
+            Anda bisa menggunakan fitur 'Forgot Password?' di halaman Login
+            untuk mengirimkan link reset ke email Anda.
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <footer>
+    <p>© 2025 | [Nama Tim Anda] | Hak Cipta Dilindungi</p>
+    <p>Kontak: support@schedulerweb.com</p>
+  </footer>
+
+  <script>
+    document.querySelectorAll(".faq-question").forEach((question) => {
+      question.addEventListener("click", () => {
+        const answer = question.nextElementSibling;
+        answer.style.display =
+          answer.style.display === "block" ? "none" : "block";
+      });
+    });
+  </script>
+</body>
+
+</html>

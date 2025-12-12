@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login Scheduler</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <style>
+    /* CSS Khusus Form (Menggunakan kembali gaya dari register.html) */
+    .auth-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f7f9fc;
+    }
+
+    .login-box {
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      text-align: center;
+    }
+
+    .login-box h2 {
+      color: #1a5e93;
+      margin-bottom: 30px;
+    }
+
+    .input-group-auth {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .input-group-auth input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .error-message {
+      color: #e74c3c;
+      font-size: 0.9em;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .link-text {
+      margin-top: 15px;
+      font-size: 0.9em;
+    }
+
+    .small-link {
+      display: block;
+      text-align: right;
+      margin-top: -10px;
+      margin-bottom: 10px;
+      font-size: 0.85em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="auth-container">
+    <div class="login-box">
+      <h2>Masuk ke Scheduler</h2>
+      <form id="login-form" onsubmit="return handleLogin(event)">
+        <div class="input-group-auth">
+          <input type="text" id="user-input" placeholder="Username/Email/No. Telp" required />
+        </div>
+        <div class="input-group-auth">
+          <input type="password" id="password" placeholder="Password" required />
+        </div>
+
+        <a href="forgot_password.html" class="small-link">Lupa Password?</a>
+
+        <button type="submit" style="width: 100%" class="quick-actions button">
+          Login
+        </button>
+      </form>
+
+      <p class="link-text">
+        Belum punya akun? <a href="register.html">Daftar</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function handleLogin(event) {
+      event.preventDefault(); // Mencegah form submit
+
+      const userInput = document.getElementById("user-input").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (userInput.length > 0 && password.length > 0) {
+        // Dalam Front-End murni, kita hanya bisa melakukan simulasi
+        alert("Login Berhasil! (Simulasi). Memuat Dashboard...");
+        // Jika Back-End berfungsi, ini akan mengarahkan ke dashboard
+        window.location.href = "dashboard.html";
+      } else {
+        alert("Harap isi semua kolom.");
+      }
+      return false;
+    }
+  </script>
+</body>
+
+</html>

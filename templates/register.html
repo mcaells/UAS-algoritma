@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register Akun Scheduler</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <style>
+    /* CSS Khusus Form */
+    .auth-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f7f9fc;
+    }
+
+    .register-box {
+      background: white;
+      padding: 40px;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 350px;
+      text-align: center;
+    }
+
+    .register-box h2 {
+      color: #1a5e93;
+      margin-bottom: 30px;
+    }
+
+    .input-group-auth {
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .input-group-auth input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .error-message {
+      color: #e74c3c;
+      font-size: 0.9em;
+      margin-top: 5px;
+      display: none;
+    }
+
+    .link-text {
+      margin-top: 20px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="auth-container">
+    <div class="register-box">
+      <h2>Daftar Akun Scheduler</h2>
+      <form id="register-form" onsubmit="return validateRegistration(event)">
+        <div class="input-group-auth">
+          <input type="email" id="email" placeholder="Email" required />
+          <div class="error-message" id="email-error">Email tidak valid.</div>
+        </div>
+        <div class="input-group-auth">
+          <input type="tel" id="phone" placeholder="Nomor Telepon" required />
+          <div class="error-message" id="phone-error">
+            Nomor Telepon tidak valid.
+          </div>
+        </div>
+        <div class="input-group-auth">
+          <input type="text" id="username" placeholder="Username" required />
+          <div class="error-message" id="username-error">
+            Username minimal 5 karakter.
+          </div>
+        </div>
+        <div class="input-group-auth">
+          <input type="password" id="password" placeholder="Password" required />
+          <div class="error-message" id="password-error">
+            Password & Konfirmasi harus sama.
+          </div>
+        </div>
+        <div class="input-group-auth">
+          <input type="password" id="confirm-password" placeholder="Konfirmasi Password" required />
+        </div>
+
+        <button type="submit" style="width: 100%" class="quick-actions button">
+          Daftar
+        </button>
+      </form>
+
+      <p class="link-text">
+        Sudah punya akun? <a href="login.html">Login</a>
+      </p>
+    </div>
+  </div>
+
+  <script>
+    function validateRegistration(event) {
+      event.preventDefault();
+      // Implementasi validasi Front-End sederhana
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword =
+        document.getElementById("confirm-password").value;
+      let isValid = true;
+
+      // ... (logika validasi yang sama)
+      if (password !== confirmPassword || password.length < 6) {
+        document.getElementById("password-error").style.display = "block";
+        isValid = false;
+      } else {
+        document.getElementById("password-error").style.display = "none";
+      }
+
+      const emailRegex = /\S+@\S+\.\S+/;
+      if (!emailRegex.test(email)) {
+        document.getElementById("email-error").style.display = "block";
+        isValid = false;
+      } else {
+        document.getElementById("email-error").style.display = "none";
+      }
+
+      if (isValid) {
+        alert(
+          "Registrasi Scheduler berhasil! (Simulasi). Silakan cek email verifikasi."
+        );
+      }
+      return false;
+    }
+  </script>
+</body>
+
+</html>

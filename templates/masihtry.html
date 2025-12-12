@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Planner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+
+<body>
+
+    <div class="sidebar">
+        <div class="logo">Planner</div>
+        <a href="#home" class="nav-item active">🏠 Dashboard</a>
+        <a href="#calendar" class="nav-item">📅 Kalender</a>
+        <a href="#schedule" class="nav-item">🗓️ Jadwal</a>
+        <a href="#assignments" class="nav-item">📝 Tugas</a>
+        <a href="#profile" class="nav-item">👤 Profil</a>
+        <a href="#logout" class="nav-item logout-link">Keluar</a>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Halo, Pengguna!</h1>
+            <div class="quick-actions">
+                <button onclick="showInput('schedule')">➕ Tambah Jadwal</button>
+                <button onclick="showInput('assignment')">➕ Tambah Tugas</button>
+            </div>
+        </header>
+
+        <section class="overview">
+            <div class="card overview-card">
+                <h3>Tugas Belum Selesai</h3>
+                <p id="pending-tasks-count">0</p>
+            </div>
+            <div class="card overview-card">
+                <h3>Jadwal Terdekat</h3>
+                <p id="closest-schedule-info">Tidak ada jadwal</p>
+            </div>
+        </section>
+
+        <section class="list-section">
+            <h2>🗓️ Jadwal</h2>
+            <div class="filter-group">
+                <label>Filter:</label>
+                <select id="schedule-filter" onchange="filterSchedules()">
+                    <option value="all">Semua</option>
+                    <option value="today">Hari Ini</option>
+                    <option value="this-week">Per Minggu</option>
+                </select>
+            </div>
+
+            <div id="schedule-input-form" class="input-form hidden">
+                <input type="text" id="matkulName" placeholder="Mata Pelajaran/Kuliah" required>
+                <input type="text" id="matkulDay" placeholder="Hari (ex: Senin)" required>
+                <input type="time" id="matkulTime" placeholder="Jam (ex: 10:00)" required>
+                <input type="text" id="matkulKet" placeholder="Keterangan (Ruangan, Dosen, dll)">
+                <button onclick="addSchedule()">Tambah Jadwal</button>
+            </div>
+
+            <table id="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Hari</th>
+                        <th>Jam</th>
+                        <th>Mata Pelajaran</th>
+                        <th>Keterangan</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="schedule-list">
+                </tbody>
+            </table>
+        </section>
+
+        <section class="list-section">
+            <h2>📝 Tugas</h2>
+            <div class="filter-group">
+                <label>Filter Status:</label>
+                <select id="task-status-filter" onchange="filterTasks()">
+                    <option value="all">Semua</option>
+                    <option value="pending">Belum Selesai</option>
+                    <option value="done">Sudah Selesai</option>
+                </select>
+                <label>Filter Mata Kuliah:</label>
+                <select id="task-matkul-filter" onchange="filterTasks()">
+                    <option value="all">Semua Mata Pelajaran</option>
+                </select>
+            </div>
+
+            <div id="assignment-input-form" class="input-form hidden">
+                <input type="text" id="tugasPel" placeholder="Mata Pelajaran Tugas" required>
+                <input type="text" id="tugasName" placeholder="Nama Tugas" required>
+                <input type="date" id="tugasDeadline" required>
+                <input type="text" id="tugasKet" placeholder="Keterangan Tugas">
+                <button onclick="addTask()">Tambah Tugas</button>
+            </div>
+
+            <table id="task-table">
+                <thead>
+                    <tr>
+                        <th>Pel.</th>
+                        <th>Tugas</th>
+                        <th>Status</th>
+                        <th>Deadline</th>
+                        <th>Ket.</th>
+                        <th>Aksi</th>
+                    </tr>
+                </thead>
+                <tbody id="task-list">
+                </tbody>
+            </table>
+        </section>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>
